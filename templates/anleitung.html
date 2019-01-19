@@ -1,0 +1,115 @@
+<p><TMPL_VAR BASIC.WELCOME></p>
+<p><TMPL_VAR BASIC.SAMPLEPLUGIN_HINT></p>
+<p><TMPL_VAR BASIC.SAMPLEPLUGIN_BESTPRACTISE></p>
+
+<!-- The following variable shows a selectbox that was generated in the cgi script -->
+<TMPL_VAR ACTIVATED>
+<p><TMPL_VAR FOOTER.GREETING></p>
+
+<div data-role="navbar" class="ui-navbar" role="navigation">
+	<ul class="ui-grid-a"> 
+		<li class="ui-block-a">
+			<div style="position:relative">
+			<div class="notifyBlueNavBar" id="notifyBlueNavBar1" style="display: none">0</div>
+			<div class="notifyRedNavBar" id="notifyRedNavBar1" style="display: none">0</div>
+			<a href="index.cgi" class="ui-link ui-btn">Einstellungen</a></div>
+		</li> 
+		<li class="ui-block-b"><div style="position:relative">
+			<div class="notifyBlueNavBar" id="notifyBlueNavBar2" style="display: none">0</div>
+			<div class="notifyRedNavBar" id="notifyRedNavBar2" style="display: none">0</div>
+			<a href="anleitung.cgi" class="ui-link ui-btn ui-btn-active">Anleitung</a>
+		</div>
+		</li>
+	</ul>
+</div>
+<div role=\"main\" class=\"ui-content\">
+<div class=\"ui-body ui-body-a ui-corner-all loxberry-logo\">
+<div style=\"margin: 5%;\">
+
+<div class="form-group" align="center">
+					<table class="formtable" border="0" width="100%">
+						<tr>
+							<p style="margin-top:60px">
+								<img src="../../../system/images/icons/serialusb-bridge/icon_512.png" alt="test" width="100" height="100">
+							</p>
+						</tr>
+					</table>
+				<p>&nbsp;</p>
+<table style="height: 100%;" width="100%">
+<tbody>
+<tr>
+<td style="width: 100%;">
+<h1>Serial over UDP</h1>
+</td>
+</tr>
+<tr>
+<td style="width: 100%;">
+<h3>Funktion:</h3>
+<p>Dieses Plugin soll eine einfache Daten&uuml;bertragung zwischen seriellen Adaptern und Netzwerkger&auml;ten (Loxone) per UDP erm&ouml;glichen Zuerst muss der Miniserver ausgew&auml;hlt werden mit dem Kommuniziert werden soll; danach der UDP - Empfangsport des Miniservers</p>
+</td>
+</tr>
+<tr>
+<td style="width: 100%;">
+<h2>Plugin aktivieren</h2>
+</td>
+</tr>
+<tr>
+<td style="width: 50%;">
+<h3>Einstellungen der Adapter:</h3>
+<p>Zuerst die Abfrage starten;es werden alle angeschlossenen USB-Ger&auml;lte aufgelistet. Zum Pr&uuml;fen ob mann die Richtige ID hat einfach den Adapter ausstecken und nochmal abfragen. Die ID aus dem Feld kopieren und in das Feld f&uuml;r den USB Adapter einf&uuml;gen; Baud-Rate einstellen.</p>
+<p></p>
+<p>Empfangsport: ist der Port an den die Daten gesendet werden ; Es darf der gleiche Port nicht 2-mal vorkommen</p>
+<p>PRAEFIX :  Hier kann die Präfix eingestellt werden die Seriell empfangenen Daten vorangestellt wird. zb.: Serielle Daten test\r    Daten UDP: USB-1=test\r</p>
+<p>Speichern.</p>
+<p>Nach einem Neustart ist das Script aktiv;</p>
+<p>Ebenfalls wird im Hintergrund t&auml;glich gepr&uuml;ft ob die Scripte laufen oder nicht. Fehler sind in der Logdatei aufgef&uuml;hrt</p>
+</td>
+</tr>
+<tr>
+<td style="width: 100%;">
+<h3>DATEN:</h3>
+<p>f&uuml;r z.b.: USB 1</p>
+</td>
+</tr>
+<tr>
+<td style="width: 100%;">
+<h3>Von UDP zu Seriell:</h3>
+<p>In der Loxone config zuerst einen Virtuellen ausgang anlegen.</p>
+<p>Dann für jedes signal das gesendet werden soll einen "Virtueller Ausgang Befehl" anlegen und bei jedem Befehl USB-1= vorstellen ; Ebenfalls am ender der Daten den Zeilenumbruch nicht vergessen \r Somit erkennt der loxberry auf welchen Adapter die Daten gesendet werden m&uuml;ssen</p>
+							<p style="margin-top:60px">
+								<img src="../../../plugins/serialusb-bridge/va.png" alt="test" width="49%" height="49%">
+								<img src="../../../plugins/serialusb-bridge/udp-seriell.png" alt="test" width="49%" height="49%">
+							</p>
+</td>
+</tr>
+<tr>
+<td style="width: 100%;">
+<h3>Von Seriell UDP:</h3>
+<p>Gleiches prinzip: Die Daten werden empfangen und es wird die USB-1= pr&auml;fix vorangestellt.</p>
+							<p style="margin-top:60px">
+<img src="../../../plugins/serialusb-bridge/loxberry.png" alt="test" width="49%" height="49%">
+<img src="../../../plugins/serialusb-bridge/vi.png" alt="test" width="49%" height="49%">
+					</p>		
+							
+</td>
+</tr>
+<tr>
+<td style="width: 100%;">
+<h2>Viel Spa&szlig; mit dem Plugin</h2>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<script>
+		var $messages = $('#form-error-message');
+		$.validate({
+			modules : 'security',
+			errorMessagePosition : $messages,
+		});
+</script>
+</div>
+</div>
+</div>

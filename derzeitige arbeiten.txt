@@ -1,0 +1,4 @@
+13.1   v1.8loglevel hinzugefügt
+14.1  v1.9  sys exit hinzugefügt mit logeintrag
+sprachen checken
+rotes x wenn script nicht aktiviert ist

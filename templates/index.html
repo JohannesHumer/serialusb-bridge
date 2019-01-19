@@ -1,0 +1,428 @@
+<p><TMPL_VAR BASIC.WELCOME></p>
+<p><TMPL_VAR BASIC.SAMPLEPLUGIN_HINT></p>
+<p><TMPL_VAR BASIC.SAMPLEPLUGIN_BESTPRACTISE></p>
+
+<!-- The following variable shows a selectbox that was generated in the cgi script -->
+<TMPL_VAR ACTIVATED>
+<p><TMPL_VAR FOOTER.GREETING></p>
+
+<div data-role="navbar" class="ui-navbar" role="navigation">
+	<ul class="ui-grid-a"> 
+		<li class="ui-block-a">
+			<div style="position:relative">
+			<div class="notifyBlueNavBar" id="notifyBlueNavBar1" style="display: none">0</div>
+			<div class="notifyRedNavBar" id="notifyRedNavBar1" style="display: none">0</div>
+			<a href="index.cgi" class="ui-link ui-btn-active">Einstellungen</a></div>
+		</li> 
+		<li class="ui-block-b">
+			<div style="position:relative">
+			<div class="notifyBlueNavBar" id="notifyBlueNavBar2" style="display: none">0</div>
+			<div class="notifyRedNavBar" id="notifyRedNavBar2" style="display: none">0</div>
+			<a href="anleitung.cgi" class="ui-link ui-btn ui-btn">Anleitung</a>
+		</div>
+		</li>
+	</ul>
+</div>
+<div role=\"main\" class=\"ui-content\">
+<div class=\"ui-body ui-body-a ui-corner-all loxberry-logo\">
+<div style=\"margin: 5%;\">
+
+<form method="post" data-ajax="false" name="main_form3" id="main_form3" action="./index.cgi">
+										<input type="hidden" name="restartscript" id="restartscript" value="1">
+											<div class="form-group">
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td align="left" width="50%">
+														<h2>Einstellungen des Plugins</h2>
+														</td>
+														<td align="right" width="40%">
+														Scripte neu Starten (Dauer: 1 Minute)
+														</td>
+														<td width="5%">
+															<input id="restartscript" name="restartscript" type="submit" value="X">
+														</td>
+													</tr>
+												<hr>
+												</table>
+										</div>
+									</form>
+
+
+									<form method="post" data-ajax="false" name="main_form" id="main_form" action="./index.cgi">
+										<input type="hidden" name="savedata" id="savedata" value="1">
+											<div class="form-group">
+												<table class="formtable" border="0" width="100%">
+													<tr>
+													<!--$faultport-->
+													<!--$faultportxx-->
+													<br>
+													</tr>
+													<tr>
+														<td width="25%">
+															<label id="labelfbpass">Miniserver:</label>
+														</td>
+														<td width="50%">
+															<select id="miniserver" name="miniserver" data-mini="true" onchange="selMS(this);">
+																<!--$MSselectlist-->
+															</select>
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+													<tr>
+														<td width="25%">
+															<label id="labelmsudpport">MiniServer UDP-Port:</label>
+														</td>
+														<td width="50%">
+															<input id="msudpport" name="msudpport" type="text" class="textfield"
+																value="<!--$msudpport-->" data-validation-error-msg="* Please enter a MiniServer UDP-Port">
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+													<tr>
+														<td width="25%">
+															<label id="labelmsenabled">Plugin Aktiviert</label>
+														</td>
+														<td width="50%">
+														<fieldset>
+																<select id="enabled" name="enabled" data-role="flipswitch">
+																	<!--$enabledlist-->
+																</select>
+															</fieldset>
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+												</table>
+												<hr>
+												<table class="formtable" border="0" width="100%">
+													<h3>USB Adapter 1</h3>
+													<tr>
+														<td align="center" width="20%">
+															<label id="labelmsenabledusb1">USB 1 Aktiviert</label>
+														</td>
+														<td width="25%">
+														<fieldset>
+																<select id="enabledusb1" name="enabledusb1" data-role="flipswitch">
+																	<!--$enabledusblist1-->
+																</select>
+															</fieldset>
+														</td>			
+														<td width="10%">
+														</td>														
+														<td align="center" width="20%">
+															<label id="usb1baudint">USB 1 BAUD</label>
+														</td>
+														<td width="25%">
+															<input id="usb1baud" name="usb1baud" type="text" class="textfield"
+																value="<!--$usb1baud-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td align="center" width="20%">
+															<label id="usb1portint">Empfangsport</label>
+														</td>
+														<td width="25%">
+															<input id="usb1port" name="usb1port" type="text" class="textfield"
+																value="<!--$usb1port-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="10%">
+														<!--$faultport12-->
+														<!--$faultport13-->
+														<!--$faultport14-->
+														</td>
+														<td align="center" width="20%">
+															<label id="usb1praefint">PRAEFIX</label>
+														</td>
+														<td width="25%">
+															<input id="usb1praefix" name="usb1praefix" type="text" class="textfield"
+																value="<!--$usb1praefix-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+													<tr>
+														<td width="25%">
+															<label id="usb1idint">USB 1 ID</label>
+														</td>
+														<td width="50%">
+															<input id="usb1id" name="usb1id" type="text" class="textfield"
+																value="<!--$usb1id-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+												</table>
+												<hr>
+												<table class="formtable" border="0" width="100%">
+													<h3>USB Adapter 2</h3>
+													<tr>
+														<td align="center" width="20%">
+															<label id="labelmsenabledusb2">USB 2 Aktiviert</label>
+														</td>
+														<td width="25%">
+														<fieldset>
+																<select id="enabledusb2" name="enabledusb2" data-role="flipswitch">
+																	<!--$enabledusblist2-->
+																</select>
+															</fieldset>
+														</td>
+														<td width="10%">
+														</td>
+														<td width="20%">
+															<label id="usb2baudint">USB 2 BAUD</label>
+														</td>
+														<td width="25%">
+															<input id="usb2baud" name="usb2baud" type="text" class="textfield"
+																value="<!--$usb2baud-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td align="center" width="20%">
+															<label id="usb2portint">Empfangsport</label>
+														</td>
+														<td width="25%">
+															<input id="usb2port" name="usb2port" type="text" class="textfield"
+																value="<!--$usb2port-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="10%">
+														<!--$faultport12-->
+														<!--$faultport23-->
+														<!--$faultport24-->
+														</td>
+														<td align="center" width="20%">
+															<label id="usb2praefint">PRAEFIX</label>
+														</td>
+														<td width="25%">
+															<input id="usb2praefix" name="usb2praefix" type="text" class="textfield"
+																value="<!--$usb2praefix-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td width="25%">
+															<label id="usb2idint">USB 2 ID</label>
+														</td>
+														<td width="50%">
+															<input id="usb2id" name="usb2id" type="text" class="textfield"
+																value="<!--$usb2id-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+												</table>
+												<hr>
+												<table class="formtable" border="0" width="100%">
+													<h3>USB Adapter 3</h3>
+													<tr>
+														<td align="center" width="20%">
+															<label id="labelmsenabledusb3">USB 3 Aktiviert</label>
+														</td>
+														<td width="25%">
+														<fieldset>
+																<select id="enabledusb3" name="enabledusb3" data-role="flipswitch">
+																	<!--$enabledusblist3-->
+																</select>
+															</fieldset>
+														</td>
+														<td width="10%">
+														</td>
+														<td width="20%">
+															<label id="usb3baudint">USB 3 BAUD</label>
+														</td>
+														<td width="25%">
+															<input id="usb3baud" name="usb3baud" type="text" class="textfield"
+																value="<!--$usb3baud-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td align="center" width="20%">
+															<label id="usb3portint">Empfangsport</label>
+														</td>
+														<td width="25%">
+															<input id="usb3port" name="usb3port" type="text" class="textfield"
+																value="<!--$usb3port-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="10%">
+														<!--$faultport13-->
+														<!--$faultport23-->
+														<!--$faultport34-->
+														</td>
+														<td align="center" width="20%">
+															<label id="usb3praefint">PRAEFIX</label>
+														</td>
+														<td width="25%">
+															<input id="usb3praefix" name="usb3praefix" type="text" class="textfield"
+																value="<!--$usb3praefix-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td width="25%">
+															<label id="usb3idint">USB 3 ID</label>
+														</td>
+														<td width="50%">
+															<input id="usb3id" name="usb3id" type="text" class="textfield"
+																value="<!--$usb3id-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+												</table>
+												<hr>
+												<table class="formtable" border="0" width="100%">
+													<h3>USB Adapter 4</h3>
+													<tr>
+														<td align="center" width="20%">
+															<label id="labelmsenabledusb4">USB 4 Aktiviert</label>
+														</td>
+														<td width="25%">
+														<fieldset>
+																<select id="enabledusb4" name="enabledusb4" data-role="flipswitch">
+																	<!--$enabledusblist4-->
+																</select>
+															</fieldset>
+														</td>
+														<td width="10%">
+														</td>
+														<td width="20%">
+															<label id="usb4baudint">USB 4 BAUD</label>
+														</td>
+														<td width="25%">
+															<input id="usb4baud" name="usb4baud" type="text" class="textfield"
+																value="<!--$usb4baud-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td align="center" width="20%">
+															<label id="usb4portint">Empfangsport</label>
+														</td>
+														<td width="25%">
+															<input id="usb4port" name="usb4port" type="text" class="textfield"
+																value="<!--$usb4port-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="10%">
+														<!--$faultport14-->
+														<!--$faultport24-->
+														<!--$faultport34-->
+														</td>
+														<td align="center" width="20%">
+															<label id="usb4praefint">PRAEFIX</label>
+														</td>
+														<td width="25%">
+															<input id="usb4praefix" name="usb4praefix" type="text" class="textfield"
+																value="<!--$usb4praefix-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td width="25%">
+															<label id="usb4idint">USB 4 ID</label>
+														</td>
+														<td width="50%">
+															<input id="usb4id" name="usb4id" type="text" class="textfield"
+																value="<!--$usb4id-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+													<hr>
+														<td width="25%">
+															<label id="labelloglv">Loglevel</label>
+														</td>
+														<td width="50%">
+														<fieldset>
+																<select id="loglv" name="loglv" data-mini="true" onchange="selMS(this);">
+																	<!--$Loglevellist-->
+																</select>
+															</fieldset>
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+												</table>
+												<table class="formtable" border="0" width="100%">
+													<tr>
+													<hr>
+														<td width="25%">&nbsp</td>
+														<td width="50%">
+															<input id="do" name="do" type="submit" value="Speichen">
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+												</table>
+											<hr>
+											<hr>
+										</div>
+									</form>
+									<br>
+									<form method="post" data-ajax="false" name="main_form2" id="main_form2" action="./index.cgi">
+										<input type="hidden" name="listdevice" id="listdevice" value="1">
+											<div class="form-group">
+												<table class="formtable" border="0" width="100%">
+													<tr>
+														<td width="25%">&nbsp</td>
+														<td width="40%">
+															<input id="usbdevices" name="usbdevices" type="submit" value="ABFRAGE AKTUALISIEREN">
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+													<tr>
+														<td width="25%">
+															<label id="listofusb">USB Geräte aktuell angeschlossen<br>(bitte Abfrage AKTUALISIEREN)</label>
+														</td>
+														<td width="50%">
+															<input id="usb1" name="usb1" type="text" class="textfield" value="<!--$usb1-->" data-validation-error-msg="* Please enter a Time">
+															<input id="usb2" name="usb2" type="text" class="textfield" value="<!--$usb2-->" data-validation-error-msg="* Please enter a Time">
+															<input id="usb3" name="usb3" type="text" class="textfield" value="<!--$usb3-->" data-validation-error-msg="* Please enter a Time">
+															<input id="usb4" name="usb4" type="text" class="textfield" value="<!--$usb4-->" data-validation-error-msg="* Please enter a Time">
+														</td>
+														<td width="25%">
+															&nbsp;
+														</td>
+													</tr>
+											</table>
+										</div>
+									</form>
+<!--$restartMsg-->
+
+
+<script>
+		var $messages = $('#form-error-message');
+		$.validate({
+			modules : 'security',
+			errorMessagePosition : $messages,
+		});
+</script>
+</div>
+</div>
+</div>
