@@ -59,5 +59,12 @@ echo "<INFO> Plugin Template folder is: $PTEMPL"
 echo "<INFO> Plugin Data folder is: $PDATA"
 echo "<INFO> Plugin Log folder (on RAMDISK!) is: $PLOG"
 echo "<INFO> Plugin CONFIG folder is: $PCONFIG"
+mkdir -p $PTEMPDIR\_upgrade
+mkdir -p $PTEMPDIR\_upgrade/config
+
+echo "<INFO> Backing up existing config files"
+echo $LBPCONFIG/$PDIR
+echo $PTEMPDIR
+cp -p -v -r $PCONFIG/* $PTEMPDIR\_upgrade/config
 
 exit 0

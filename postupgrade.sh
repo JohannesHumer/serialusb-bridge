@@ -60,6 +60,14 @@ echo "<INFO> Plugin Data folder is: $PDATA"
 echo "<INFO> Plugin Log folder (on RAMDISK!) is: $PLOG"
 echo "<INFO> Plugin CONFIG folder is: $PCONFIG"
 
+echo "<INFO> Copy back existing config files"
+cp -p -v -r $PTEMPDIR\_upgrade/config/* $PCONFIG 
+
+echo "<INFO> Remove temporary folders"
+rm -r $PTEMPDIR\_upgrade
+
+
+
 echo "<INFO> Postinstallation finished."
 
 echo "<WARNING> ================================================================="
