@@ -240,7 +240,7 @@ system('ID=$((ID=1)); echo -n >'.$home.'/config/plugins/'.$psubfolder.'/listofus
 }
 
 if(param('restartscript')){
-system('python '.$home.'/bin/plugins/'.$psubfolder.'/restart.py &');
+system('python3 '.$home.'/bin/plugins/'.$psubfolder.'/restart.py &');
 }
 # ---------------------------------------
 # Parse config file usb geräte

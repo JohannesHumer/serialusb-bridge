@@ -9,7 +9,7 @@ SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # m h dom mon dow user  command
-@reboot   loxberry        python REPLACELBPBINDIR/serialusb-bridge-script-usb1.py
-@reboot   loxberry        python REPLACELBPBINDIR/serialusb-bridge-script-usb2.py
-@reboot   loxberry        python REPLACELBPBINDIR/serialusb-bridge-script-usb3.py
-@reboot   loxberry        python REPLACELBPBINDIR/serialusb-bridge-script-usb4.py
+@reboot   loxberry        python3 REPLACELBPBINDIR/serialusb-bridge-script-usb1.py
+@reboot   loxberry        python3 REPLACELBPBINDIR/serialusb-bridge-script-usb2.py
+@reboot   loxberry        python3 REPLACELBPBINDIR/serialusb-bridge-script-usb3.py
+@reboot   loxberry        python3 REPLACELBPBINDIR/serialusb-bridge-script-usb4.py

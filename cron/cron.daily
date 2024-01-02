@@ -3,23 +3,23 @@
 if ps -ef | grep -v grep | grep serialusb-bridge-script-usb1.py ; then 
 echo "test"
 else
-python REPLACELBPBINDIR/serialusb-bridge-script-usb1.py
+python3 REPLACELBPBINDIR/serialusb-bridge-script-usb1.py
 fi
 
 if ps -ef | grep -v grep | grep serialusb-bridge-script-usb2.py ; then 
 echo "test"
 else
-python REPLACELBPBINDIR/serialusb-bridge-script-usb2.py
+python3 REPLACELBPBINDIR/serialusb-bridge-script-usb2.py
 fi
 
 if ps -ef | grep -v grep | grep serialusb-bridge-script-usb3.py ; then 
 echo "test"
 else
-python REPLACELBPBINDIR/serialusb-bridge-script-usb3.py
+python3 REPLACELBPBINDIR/serialusb-bridge-script-usb3.py
 fi
 
 if ps -ef | grep -v grep | grep serialusb-bridge-script-usb4.py ; then 
 echo "test"
 else
-python REPLACELBPBINDIR/serialusb-bridge-script-usb4.py
+python3 REPLACELBPBINDIR/serialusb-bridge-script-usb4.py
 fi

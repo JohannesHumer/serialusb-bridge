@@ -36,8 +36,8 @@ for line in os.popen("ps ax | grep  serialusb-bridge-script-usb4.py | grep -v gr
 				fields = line.split()
 				pid = fields[0]
 				os.kill(int(pid), signal.SIGKILL)
-p = subprocess.call("python REPLACELBPBINDIR/serialusb-bridge-script-usb1.py &", shell=True, stdout=subprocess.PIPE) # Prozesse im Hintergrund starten &
-p = subprocess.call("python REPLACELBPBINDIR/serialusb-bridge-script-usb2.py &", shell=True, stdout=subprocess.PIPE) # Prozesse im Hintergrund starten &
-p = subprocess.call("python REPLACELBPBINDIR/serialusb-bridge-script-usb3.py &", shell=True, stdout=subprocess.PIPE) # Prozesse im Hintergrund starten &
-p = subprocess.call("python REPLACELBPBINDIR/serialusb-bridge-script-usb4.py &", shell=True, stdout=subprocess.PIPE) # Prozesse im Hintergrund starten &
+p = subprocess.call("python3 REPLACELBPBINDIR/serialusb-bridge-script-usb1.py &", shell=True, stdout=subprocess.PIPE) # Prozesse im Hintergrund starten &
+p = subprocess.call("python3 REPLACELBPBINDIR/serialusb-bridge-script-usb2.py &", shell=True, stdout=subprocess.PIPE) # Prozesse im Hintergrund starten &
+p = subprocess.call("python3 REPLACELBPBINDIR/serialusb-bridge-script-usb3.py &", shell=True, stdout=subprocess.PIPE) # Prozesse im Hintergrund starten &
+p = subprocess.call("python3 REPLACELBPBINDIR/serialusb-bridge-script-usb4.py &", shell=True, stdout=subprocess.PIPE) # Prozesse im Hintergrund starten &
 logging.warning("Neustart der Scripte ERFOLGREICH Abgeschlossen  WAIT ABOUT 1 MINUTE!!" + zeit)

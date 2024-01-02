@@ -2,7 +2,7 @@
 # encoding=utf-8
 
 import time
-import ConfigParser
+import configparser
 import socket
 import serial
 import os
@@ -11,7 +11,7 @@ import logging
 import signal
 import sys
 
-time.sleep(55) # warten bis raspberry fertig gestartet hat
+time.sleep(26) # warten bis raspberry fertig gestartet hat
 
 def main():
 	# ---------------------------------------------
@@ -26,7 +26,7 @@ lbplog = os.environ['LBPLOG']
 # ---------------------------------------------
 # Durchsuche PlugIn config file
 # ---------------------------------------------
-pluginconfig = ConfigParser.ConfigParser()
+pluginconfig = configparser.ConfigParser()
 pluginconfig.read(lbpconfig + "/serialusb-bridge/serialusb-bridge-config.cfg")
 
 enabled = pluginconfig.get('serialusbbridge-config', 'ENABLED')
@@ -41,7 +41,7 @@ usb4praefix = pluginconfig.get('serialusbbridge-config', 'USB4PRAEFIX')
 # ---------------------------------------------
 # Durchsuche Loxberry config file für die Miniserverdaten
 # ---------------------------------------------
-loxberryconfig = ConfigParser.ConfigParser()
+loxberryconfig = configparser.ConfigParser()
 loxberryconfig.read(lbsconfig + "/general.cfg")
 miniserverIP = loxberryconfig.get(miniservername, 'IPADDRESS')
 loxberryIP = loxberryconfig.get('NETWORK', 'IPADDRESS')
@@ -101,11 +101,11 @@ def a():
 			while True :
 				data, addr = sockloxberryusb4.recvfrom(1024) 							# buffer ist 1024 bytes und wird von loxone empfangen
 				data2 = data
-				usberkennung = data2[0:6]  #erkennen ob usb 1,....
+				usberkennung = data2[0:6].decode()  #erkennen ob usb 1,....
 				usbdaten = data2[6:]		#usb-x= löschen
 				if usberkennung == "USB-4=":	# wenn usb-2 vorgestellt ist die restlichen daten seriell schreiben
 					s4.write(usbdaten) # daten seriell schreiben
-					logging.info("DATENWEG USB4 OK UDP ->USB daten  :" + usbdaten)					
+					logging.info("DATENWEG USB4 OK UDP ->USB daten  :" + str(usbdaten))					
 		except Exception as e:
 			logging.exception("\n\n\n" + "Fehler bei Script USB-4 Von UDP zu Seriell     " + zeit)				#logeintrag schreiben
 			for line in os.popen("ps ax | grep  serialusb-bridge-script-usb4.py | grep -v grep"):			# ganzes script mit threads killen
@@ -117,9 +117,9 @@ def b():
 		try:   											#überwachung ob fehler sind
 			while True :
 					response = s4.readline() 				#Serielles lesen am usb (nano)
-					response2 = usb4praefix + response					# kopie wird erstellt und mit der präfix befüllt
-					sock.sendto(response2,(miniserverIP,virtualUDPPort)) 		#daten werden zu loxone gesendet     
-					logging.info("DATENWEG USB4 OK USB -> UDP daten  :" + response2)
+					response2 = usb4praefix + response.decode()			# kopie wird erstellt und mit der präfix befüllt
+					sock.sendto(response2.encode(),(miniserverIP,virtualUDPPort)) 		#daten werden zu loxone gesendet     
+					logging.info("DATENWEG USB4 OK USB -> UDP daten  :" + str(response2))
 		except Exception as e:
 			logging.exception("\n\n\n" + "Fehler bei Script USB-4 Von Seriell zu UDP  " + zeit)					#logeintrag schreiben
 			for line in os.popen("ps ax | grep  serialusb-bridge-script-usb4.py | grep -v grep"):			# ganzes script mit threads killen
