@@ -99,13 +99,13 @@ if s1.isOpen() == False and i == 4:					# wenn der port nicht geöffnet werden k
 def a():
 		try:   										    #überwachung ob fehler sind											#daten von Arduino Nano
 			while True :
-                data, addr = sockloxberryusb1.recvfrom(1024)                            # buffer ist 1024 bytes und wird von loxone empfangen
-                data2 = data
-                usberkennung = data2[0:6].decode()  #erkennen ob usb 1,....
-                usbdaten = data2[6:]        #usb-x= löschen
-                if usberkennung == "USB-1=":    # wenn usb-2 vorgestellt ist die restlichen daten seriell schreiben
-                    s1.write(usbdaten) # daten seriell schreiben
-                    logging.info("DATENWEG USB1 OK UDP ->USB daten  :" + str(usbdaten))
+				data, addr = sockloxberryusb1.recvfrom(1024) 							# buffer ist 1024 bytes und wird von loxone empfangen
+				data2 = data
+				usberkennung = data2[0:6].decode()  #erkennen ob usb 1,....
+				usbdaten = data2[6:]		#usb-x= löschen
+				if usberkennung == "USB-1=":	# wenn usb-2 vorgestellt ist die restlichen daten seriell schreiben
+					s3.write(usbdaten) # daten seriell schreiben	
+					logging.info("DATENWEG USB1 OK UDP ->USB daten  :" + str(usbdaten))
 		except Exception as e:
 			logging.exception("\n\n\n" + "Fehler bei Script USB-1 Von UDP zu Seriell     " + zeit)				#logeintrag schreiben
 			for line in os.popen("ps ax | grep  serialusb-bridge-script-usb1.py | grep -v grep"):			# ganzes script mit threads killen
