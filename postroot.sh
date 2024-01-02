@@ -66,6 +66,7 @@ echo "<INFO> Plugin CONFIG folder is: $PCONFIG"
 #if [ $? -eq 0 ]; then echo"" #wenn sie schon vorhanden sind nichts tun
 #else echo "dtoverlay=w1-gpio,gpiopin=4,pullup=on" >> /boot/config.txt #ansonsten die Einträge einfügen
 #fi
+python3 -m pip install pyserial
 
 #grep -i "w1-gpio pullup=1" /etc/modules #überprüfen ob die enträge schon vorhanden sind
 #if [ $? -eq 0 ]; then echo"" #wenn sie schon vorhanden sind nichts tun
