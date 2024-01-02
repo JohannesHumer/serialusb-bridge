@@ -227,7 +227,7 @@ if (param('savedata')) {
 	$conf->param('serialusbbridge-config.USB3PRAEFIX', unquotemeta($usb3praefix));
 	$conf->param('serialusbbridge-config.USB4PRAEFIX', unquotemeta($usb4praefix));
 	$conf->param('serialusbbridge-config.LOGLV', unquotemeta($loglv));
-	reboot_required("The changes of the settings of Serial USB Bridge Plugin require !!!!! 2 !!!!!");
+	reboot_required("Please Restart after the reboot the Script in the Plugin");
 	
 	$conf->save();
 
