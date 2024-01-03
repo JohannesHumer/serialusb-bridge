@@ -117,7 +117,7 @@ def b():
 		try:   											#überwachung ob fehler sind
 			while True :
 					response = s4.readline() 				#Serielles lesen am usb (nano)
-					response2 = usb4praefix + response.decode()			# kopie wird erstellt und mit der präfix befüllt
+					response2 = usb4praefix + response.decode('ISO-8859-1')			# kopie wird erstellt und mit der präfix befüllt
 					sock.sendto(response2.encode(),(miniserverIP,virtualUDPPort)) 		#daten werden zu loxone gesendet     
 					logging.info("DATENWEG USB4 OK USB -> UDP daten  :" + str(response2))
 		except Exception as e:
